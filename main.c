@@ -5,9 +5,10 @@ int main() {
     
     char characterFromUser[50];
 
-    printf("Enter a character:");
+    printf("Enter a letter:");
 
     fgets(characterFromUser, sizeof(characterFromUser), stdin);
+    printf("%ld", sizeof(characterFromUser));
     printf("You entered: %s", characterFromUser);
 
     return 0;
