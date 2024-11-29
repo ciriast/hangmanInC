@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int main() {
     printf("Start game!\n");
@@ -9,7 +10,8 @@ int main() {
     printf("Enter a letter:");
 
     fgets(characterFromUser, sizeof(characterFromUser), stdin);
-    printf("You entered: %s\n", characterFromUser);
-
+    
+    char characterToUse = tolower(characterFromUser[0]);
+    printf("You entered: %c\n", characterToUse);
     return 0;
 }
