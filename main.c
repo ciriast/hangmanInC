@@ -9,8 +9,7 @@ int main() {
     printf("Enter a letter:");
 
     fgets(characterFromUser, sizeof(characterFromUser), stdin);
-    printf("%ld", sizeof(characterFromUser));
-    printf("You entered: %s", characterFromUser);
+    printf("You entered: %s\n", characterFromUser);
 
     return 0;
 }
