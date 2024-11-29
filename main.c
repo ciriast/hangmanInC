@@ -14,7 +14,7 @@ int main() {
     char characterToUse = tolower(characterFromUser[0]);
     printf("You entered: %c\n", characterToUse);
 
-    if ((characterToUse < 'a' || characterToUse > 'z') || (characterToUse > 'a' && characterToUse > 'z')) {
+    if (characterToUse < 'a' || characterToUse > 'z') {
         printf("The character is not an alphabet.");
         return 0;
     }
