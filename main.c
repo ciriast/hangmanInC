@@ -13,14 +13,25 @@ void clear_input_buffer() {
 int main() {
     printf("Start game!\n");
     char wordToGuess[5] = "hello";    
-    int remaining_lives = 3;
+    int remaining_lives = 2;
 
     printf("Note: You can enter only one letter, if you enter more than one, only the first character will be take it.\n");
 
     while (remaining_lives > 0) {
         char my_input[10];
         char characterFromUser;
+        
+        for (int i = 0; i < sizeof(my_input) / sizeof(my_input[0]); ++i) {
+            if (my_input[i] != '\0') {
+                my_input[i] = '\0';
+            }
+        }
+        
+        if (characterFromUser != '\0') {
+            characterFromUser = '\0';
+        }
 
+        printf("%s", my_input);
         printf("You have %d remaining lives\n", remaining_lives);
         printf("Enter a letter:");
 
@@ -33,7 +44,8 @@ int main() {
             printf("The character is not an alphabet.\n");
         }
         
-        clear_input_buffer();
+        while((getchar()) != '\n');
+
         --remaining_lives;
     }
 
