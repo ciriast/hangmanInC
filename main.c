@@ -25,17 +25,6 @@ int main() {
         size_t len = 0;
         char characterFromUser;
         
-        for (int i = 0; i < sizeof(my_input) / sizeof(my_input[0]); ++i) {
-            if (my_input[i] != '\0') {
-                my_input[i] = '\0';
-            }
-        }
-        
-        if (characterFromUser != '\0') {
-            characterFromUser = '\0';
-        }
-
-        printf("%s", my_input);
         printf("You have %d remaining lives\n", remaining_lives);
         printf("Enter a letter:");
         
