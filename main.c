@@ -16,11 +16,12 @@ void clear_input_buffer() {
 int main() {
     printf("Start game!\n");
     char wordToGuess[5] = "hello";    
-    int remaining_lives = 2;
+    int remaining_lives = 3;
 
     printf("Note: You can enter only one letter, if you enter more than one, only the first character will be take it.\n");
 
     while (remaining_lives > 0) {
+        int lost_life = 0;
         char my_input[10];
         size_t len = 0;
         char characterFromUser;
@@ -37,13 +38,19 @@ int main() {
             printf("The character is not an alphabet.\n");
         }
         
-        --remaining_lives;
-        
         len = strlen(my_input);
         if (len && my_input[len - 1] == '\n')
             my_input[--len] = 0;
         else
             clear_input_buffer();
+        
+        for (int i = 0; i < sizeof(wordToGuess) / sizeof(wordToGuess[0]); ++i) {
+            if (wordToGuess[i] != characterFromUser)
+                lost_life = 1;
+        }
+
+        if (lost_life == 1)
+            --remaining_lives;
     }
 
     return 0;
