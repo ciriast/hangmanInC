@@ -15,10 +15,12 @@ void clear_input_buffer() {
 // https://stackoverflow.com/questions/51227542/how-to-avoid-pressing-enter-twice-when-using-getchar-to-clear-input-buffer
 int main() {
     printf("Start game!\n");
-    char wordToGuess[5] = "hello";    
+    char wordToGuess[5] = "hello";
+    char showing_word[5] = "_____";
     int remaining_lives = 3;
 
     printf("Note: You can enter only one letter, if you enter more than one, only the first character will be take it.\n");
+    printf("The word contains five letters: %s\n", showing_word);
 
     while (remaining_lives > 0) {
         int lost_life = 1;
