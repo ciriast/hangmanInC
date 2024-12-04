@@ -15,7 +15,7 @@ void clear_input_buffer() {
 // https://stackoverflow.com/questions/51227542/how-to-avoid-pressing-enter-twice-when-using-getchar-to-clear-input-buffer
 int main() {
     printf("Start game!\n");
-    char wordToGuess[5] = "hello";
+    char wordToGuess[6] = "hello";
     char showing_word[6] = "_____";
     int remaining_lives = 3;
     int number_of_word_guessed = 5;
@@ -28,7 +28,8 @@ int main() {
         char my_input[10];
         size_t len = 0;
         char characterFromUser;
-        
+        int is_alphabet = 1;
+
         printf("You have %d remaining lives\n", remaining_lives);
         printf("Enter a letter:");
         
@@ -39,15 +40,17 @@ int main() {
 
         if (characterFromUser < 'a' || characterFromUser > 'z') {
             printf("The character is not an alphabet.\n");
+            is_alphabet = 0;
         }
         
         len = strlen(my_input);
+
         if (len && my_input[len - 1] == '\n')
             my_input[--len] = 0;
         else
             clear_input_buffer();
         
-        for (int i = 0; i < sizeof(wordToGuess) / sizeof(wordToGuess[0]); ++i) {
+        for (int i = 0; i < sizeof(wordToGuess) / sizeof(wordToGuess[0]) && is_alphabet == 1; ++i) {
             if (wordToGuess[i] == characterFromUser) { 
                 lost_life = 0;
                 showing_word[i] = characterFromUser;
@@ -57,7 +60,7 @@ int main() {
         
         printf("Word to guess: %s\n", showing_word);
 
-        if (lost_life == 1)
+        if (lost_life == 1 && is_alphabet == 1)
             --remaining_lives;
     }
     
@@ -65,5 +68,6 @@ int main() {
         printf("You win!\n");
     else
         printf("You lost.\n");
+
     return 0;
 }
