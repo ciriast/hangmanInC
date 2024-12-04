@@ -51,7 +51,7 @@ int main() {
             clear_input_buffer();
         
         for (int i = 0; i < sizeof(wordToGuess) / sizeof(wordToGuess[0]) && is_alphabet == 1; ++i) {
-            if (wordToGuess[i] == characterFromUser) { 
+            if (wordToGuess[i] == characterFromUser && showing_word[i] != characterFromUser) { 
                 lost_life = 0;
                 showing_word[i] = characterFromUser;
                 --number_of_word_guessed;
