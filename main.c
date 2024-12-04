@@ -21,7 +21,7 @@ int main() {
     printf("Note: You can enter only one letter, if you enter more than one, only the first character will be take it.\n");
 
     while (remaining_lives > 0) {
-        int lost_life = 0;
+        int lost_life = 1;
         char my_input[10];
         size_t len = 0;
         char characterFromUser;
@@ -45,13 +45,19 @@ int main() {
             clear_input_buffer();
         
         for (int i = 0; i < sizeof(wordToGuess) / sizeof(wordToGuess[0]); ++i) {
-            if (wordToGuess[i] != characterFromUser)
-                lost_life = 1;
+            if (wordToGuess[i] == characterFromUser) { 
+                lost_life = 0;
+                break;
+            }
         }
 
         if (lost_life == 1)
             --remaining_lives;
     }
-
+    
+    if (remaining_lives > 0)
+        printf("You win!\n");
+    else
+        printf("You lost.\n");
     return 0;
 }
